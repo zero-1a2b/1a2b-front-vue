@@ -2,7 +2,7 @@
     <div class="game-ui">
           <el-row class="game-head" :gutter="12">
             <el-col :span="12" :offset="6">
-              <el-card >
+              <el-card class="game-card">
                   房间号：{{room_id}}
               </el-card>
             </el-col>
@@ -206,11 +206,13 @@ export default {
   },
   watch: {
     guesser: function () {
-      this.$store.commit('ADD_MSG', {
-        msg: SocketMsg.guess_player(this.current_player),
-        playerName: '系统',
-        messageType: 1
-      })
+      if (this.guesser >= 0) {
+        this.$store.commit('ADD_MSG', {
+          msg: SocketMsg.guess_player(this.current_player),
+          playerName: '系统',
+          messageType: 1
+        })
+      }
     }
   },
   mounted () {
@@ -251,6 +253,12 @@ export default {
 
 .game-ui{
   height: inherit;
+}
+
+.game-card{
+  background-color: #584b42;
+  color: #dee3e2;
+  border: 0;
 }
 
 </style>

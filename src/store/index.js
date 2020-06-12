@@ -83,7 +83,7 @@ export const Store = new Vuex.Store({
       state.msgList.push(SocketMsg.chat(payload.msg, payload.playerName, state.msgCounter, payload.messageType))
       state.msgCounter += 1
     },
-    set_MSG_COUNTER: (state, payload) => {
+    SET_MSG_COUNTER: (state, payload) => {
       state.msgCounter = payload
     },
     SET_ROOM_ID: (state, payload) => {
